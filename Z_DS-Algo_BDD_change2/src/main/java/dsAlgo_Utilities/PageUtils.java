@@ -28,7 +28,7 @@ public class PageUtils {
 			jse.executeScript("window.scrollBy(0,500)", e);}
 	 
 	 	public static void implicit_wait(WebDriver driver,WebElement e) {
-		new WebDriverWait(driver,Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(e));}
+		new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(e));}
 	
 	 	public static void menu_click(WebDriver driver,List<WebElement> e,String option) {
 		scrolldown(driver);
@@ -40,7 +40,8 @@ public class PageUtils {
 		}
 	 	
 	 	public static void entercode(WebDriver driver,WebElement e,String code)
-	 	{		for (int j=0;j<=40;j++) { 
+	 	{		implicit_wait(driver, e);
+	 		    for (int j=0;j<=40;j++) { 
 			  	e.sendKeys(Keys.DELETE);   } 
 	 			e.sendKeys(code);
 		}
